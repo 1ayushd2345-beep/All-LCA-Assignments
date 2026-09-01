@@ -1,1 +1,48 @@
+list1=["Ayush","Rohan","Vedant","Jayesh"]
+print("Your originial student list is",list1)
+#add student name
+list1.append("Krishna")
+print("Your new list after addition is",list1)
+#delete name
+list1.remove("Jayesh")
+print("Your new list after deleting student name",list1)
+#update name
+list1[1]="Ram"
+print("Your new list after updating",list1)
 
+
+#for tuples 
+tup1=("Aparna","Anita","geeta","sunita")
+print("your original student tuple is",tup1)
+#add student name
+#for adding student name in the tuple we have to change tuple into list
+new_list=list(tup1)
+new_list.append("Curie")
+#convert list in tuple again
+tup2=tuple(new_list)
+print("new tuple of students affter addition of name is",tup2)
+#delete
+list2=list(tup2)
+list2.remove("geeta")
+tup3=tuple(list2)
+print("new tuple of students after deleting element is", tup3)
+
+#update
+list3=list(tup3)
+list3[2]="Veena"
+tup4=tuple(list3)
+print("new tuple of students after updating",tup4)
+
+
+#dictionary
+dict1={"1":"AYUSH","2":"ROHAN","3":"SURESH","4":"PRANEET"}
+print("original dictionary is",dict1)
+#add
+dict1.update({"5":"RAHUL"})
+print("new dictionary after addition is",dict1)
+#update
+dict1.update({"3":"MOHAN"})
+print("new dictionary after updating is",dict1)
+#delete
+del dict1["2"]
+print("new dictionary after deleting student name",dict1)
