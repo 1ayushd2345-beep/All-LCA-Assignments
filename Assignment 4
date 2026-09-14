@@ -26,9 +26,8 @@ print(mat_3)
 
 
 
-                        ###  using list method ###
 
-
+#2nd method using lists
 
 matrix1 = [[11,12,13],
            [14, 15, 16],
@@ -62,4 +61,4 @@ for r in result:
 
 
 
-                    ### THANK YOU ###
+                  
