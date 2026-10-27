@@ -1,0 +1,36 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+df = pd.read_csv("data.csv")
+
+# Display the dataset
+print(df)
+
+# 1. Line Plot
+plt.plot(df["Name"], df["Marks"], marker="o")
+plt.title("Line Plot")
+plt.xlabel("Name")
+plt.ylabel("Marks")
+plt.show()
+
+# 2. Bar Plot
+plt.bar(df["Name"], df["Marks"], color="skyblue")
+plt.title("Bar Plot")
+plt.xlabel("Name")
+plt.ylabel("Marks")
+plt.show()
+
+# 3. Scatter Plot
+plt.scatter(df["Name"], df["Marks"], color="red")
+plt.title("Scatter Plot")
+plt.xlabel("Name")
+plt.ylabel("Marks")
+plt.show()
+
+# 4. Heatmap
+sns.heatmap(df[["Marks", "Age"]].corr(), annot=True, cmap="coolwarm")
+plt.title("Heatmap")
+plt.show()
