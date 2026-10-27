@@ -1,1 +1,47 @@
+import pandas as pd
+
+# Ask the user for the file name
+file_name = input("Enter the file name (e.g., data.csv or data.xlsx): ")
+
+# Load the file based on its extension
+if file_name.endswith(".csv"):
+    df = pd.read_csv(file_name)
+    print("Successfully loaded CSV file!")
+elif file_name.endswith(".xlsx") or file_name.endswith(".xls"):
+    df = pd.read_excel(file_name)
+    print("Successfully loaded Excel file!")
+else:
+    print("Invalid file format! Please use a .csv or .xlsx file.")
+    exit()  # Stops the program if the file type is wrong
+
+print("\n--- Original Data Preview ---")
+print(df.head(3))  # Shows just the first 3 rows
+
+# Clean the missing data using a loop
+for column in df.columns:
+
+    # Check if the column contains numbers (integer or float)
+    if df[column].dtype == "int64" or df[column].dtype == "float64":
+        # Calculate the average (mean) of the column
+        average_value = df[column].mean()
+        # Fill empty cells with the average
+        df[column] = df[column].fillna(average_value)
+        print(f"Filled missing numbers in [{column}] with average: {average_value:.2f}")
+
+    # If the column contains text/strings
+    else:
+        # Find the most frequent word (mode)
+        most_frequent = df[column].mode()[0]
+        # Fill empty cells with that word
+        df[column] = df[column].fillna(most_frequent)
+        print(f"Filled missing text in [{column}] with most frequent: '{most_frequent}'")
+
+
+# 4. Save the freshly cleaned data to a new file
+output_name = "cleaned_output.csv"
+df.to_csv(output_name, index=False)
+
+print("\n--- Cleaned Data Preview ---")
+print(df.head(3))
+print(f"\nSuccess! Your cleaned data is saved as '{output_name}'")
 
